@@ -71,5 +71,10 @@ namespace QLTaiKhoanNganHang
         {
             MessageBox.Show("Chính sách và điều khoản đang được cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
