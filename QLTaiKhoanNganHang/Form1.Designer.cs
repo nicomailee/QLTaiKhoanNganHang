@@ -44,6 +44,7 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.chk_ShowPassword = new System.Windows.Forms.CheckBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBank)).BeginInit();
             this.panelRight.SuspendLayout();
@@ -85,6 +86,7 @@
             // panelRight
             // 
             this.panelRight.BackColor = System.Drawing.Color.LightBlue;
+            this.panelRight.Controls.Add(this.checkBox1);
             this.panelRight.Controls.Add(this.linkTerms);
             this.panelRight.Controls.Add(this.label3);
             this.panelRight.Controls.Add(this.label2);
@@ -203,6 +205,16 @@
             this.txtPassword.Size = new System.Drawing.Size(151, 22);
             this.txtPassword.TabIndex = 5;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(235, 139);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(95, 20);
+            this.checkBox1.TabIndex = 11;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -245,6 +257,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel linkTerms;
         private System.Windows.Forms.Panel panelLogin;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
