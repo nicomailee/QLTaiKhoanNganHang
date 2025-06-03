@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,11 @@ using System.Windows.Forms;
 
 namespace QLTaiKhoanNganHang
 {
-    public partial class Form1 : Form
+    public partial class FormDangNhap : Form
     {
-        public Form1()
+        string ConnectionString = @"Data Source=.\SQLEXPRESS; Initial Catalog=QUAN LI TAI KHOAN NGAN HANG;Integrated Security= True";
+         
+        public FormDangNhap()
         {
             InitializeComponent();
             this.Resize += Form1_Resize;
@@ -54,16 +57,30 @@ namespace QLTaiKhoanNganHang
 
         private void btn_Dangnhap_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
+            try
+            {
+                SqlConnection conn = new SqlConnection(ConnectionString);
+                SqlCommand cmd = new SqlCommand("KTRADANGNHAP", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@TenDangNhap", txtUsername.Text);
+                cmd.Parameters.AddWithValue("@MatKhau", txtPassword.Text);
+                conn.Open();
+                int ketQua = (int)cmd.ExecuteScalar(); // Vì thủ tục trả về SELECT 1 hoặc 0
 
-            if (username == "Lemai" && password == "123")
-            {
-                MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (ketQua == 1)
+                {
+                    this.Hide();
+                    FormTrangChu trangchu = new FormTrangChu();
+                    trangchu.ShowDialog();
+                    this.Close();
+                }
+
+                else
+                    MessageBox.Show("Sai tài khoản hoặc mật khẩu.");
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi đăng nhập: " + ex.Message);
             }
         }
 
