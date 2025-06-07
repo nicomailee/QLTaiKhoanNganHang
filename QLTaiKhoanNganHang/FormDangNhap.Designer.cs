@@ -66,7 +66,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(112, 409);
+            this.label1.Location = new System.Drawing.Point(112, 421);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(178, 28);
             this.label1.TabIndex = 1;
@@ -75,7 +75,7 @@
             // pictureBoxBank
             // 
             this.pictureBoxBank.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxBank.Image")));
-            this.pictureBoxBank.Location = new System.Drawing.Point(3, 120);
+            this.pictureBoxBank.Location = new System.Drawing.Point(2, 139);
             this.pictureBoxBank.Name = "pictureBoxBank";
             this.pictureBoxBank.Size = new System.Drawing.Size(402, 269);
             this.pictureBoxBank.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -106,7 +106,7 @@
             this.panelLogin.Controls.Add(this.txtPassword);
             this.panelLogin.Location = new System.Drawing.Point(3, 120);
             this.panelLogin.Name = "panelLogin";
-            this.panelLogin.Size = new System.Drawing.Size(350, 351);
+            this.panelLogin.Size = new System.Drawing.Size(387, 355);
             this.panelLogin.TabIndex = 10;
             // 
             // linkTerms
