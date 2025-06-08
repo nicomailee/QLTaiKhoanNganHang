@@ -54,29 +54,36 @@ namespace QLTaiKhoanNganHang
         {
             Application.Exit();
         }
+        
+        public static string MaNV_DangNhap; // Biến toàn cục (hoặc đưa vào class CurrentUser)
 
         private void btn_Dangnhap_Click(object sender, EventArgs e)
         {
             try
             {
-                SqlConnection conn = new SqlConnection(ConnectionString);
-                SqlCommand cmd = new SqlCommand("KTRADANGNHAP", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@TenDangNhap", txtUsername.Text);
-                cmd.Parameters.AddWithValue("@MatKhau", txtPassword.Text);
-                conn.Open();
-                int ketQua = (int)cmd.ExecuteScalar(); // Vì thủ tục trả về SELECT 1 hoặc 0
-
-                if (ketQua == 1)
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
                 {
-                    this.Hide();
-                    FormTrangChu trangchu = new FormTrangChu();
-                    trangchu.ShowDialog();
-                    this.Close();
-                }
+                    SqlCommand cmd = new SqlCommand("KTRADANGNHAP", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@TenDangNhap", txtUsername.Text.Trim());
+                    cmd.Parameters.AddWithValue("@MatKhau", txtPassword.Text.Trim());
 
-                else
-                    MessageBox.Show("Sai tài khoản hoặc mật khẩu.");
+                    conn.Open();
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        MaNV_DangNhap = result.ToString(); // Lưu mã nhân viên
+                        this.Hide();
+                        FormTrangChu trangchu = new FormTrangChu();
+                        trangchu.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sai tài khoản hoặc mật khẩu.");
+                    }
+                }
             }
             catch (Exception ex)
             {
